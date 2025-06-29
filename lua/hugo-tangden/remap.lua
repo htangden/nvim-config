@@ -5,12 +5,17 @@ vim.keymap.set("n", "<leader>em", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>hl", vim.cmd.nohlsearch)
 vim.keymap.set("n", "<leader>rr", "<cmd>Rest run<CR>")
 
+vim.keymap.set("n", "<leader>go", function()
+  local url = vim.fn.expand("<cfile>")
+  vim.fn.jobstart({"xdg-open", url}, {detach = true})
+end, { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition (LSP)" })
 vim.keymap.set('n', '<leader>in', vim.lsp.buf.format)
 
 vim.keymap.set("n", "<leader>ya", "ggVGy")
