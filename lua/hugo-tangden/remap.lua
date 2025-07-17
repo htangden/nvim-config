@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
 
+
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
+vim.keymap.set('c', 'jk', '<Esc>', { desc = 'Exit insert mode' })
+
 vim.keymap.set("n", "<leader>ls", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>em", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>hl", vim.cmd.nohlsearch)
@@ -10,13 +14,14 @@ vim.keymap.set("n", "<leader>go", function()
   vim.fn.jobstart({"xdg-open", url}, {detach = true})
 end, { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('i', '[', '[]<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '(', '()<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '{', '{}<Left>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dc", ":Copilot disable<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ec", ":Copilot enable<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition (LSP)" })
 vim.keymap.set('n', '<leader>in', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>sh', vim.lsp.buf.signature_help)
+vim.keymap.set('n', '<leader>ho', vim.lsp.buf.hover)
 
 vim.keymap.set("n", "<leader>ya", "ggVGy")
 
@@ -34,4 +39,9 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
+
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
