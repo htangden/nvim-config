@@ -14,8 +14,15 @@ vim.keymap.set("n", "<leader>go", function()
   vim.fn.jobstart({"xdg-open", url}, {detach = true})
 end, { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>dc", ":Copilot disable<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ec", ":Copilot enable<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dc", function()
+  vim.cmd("Copilot disable")
+  print("Copilot disabled")
+end, { noremap = true, silent = false })
+
+vim.keymap.set("n", "<leader>ec", function()
+  vim.cmd("Copilot enable")
+  print("Copilot enabled")
+end, { noremap = true, silent = false })
 
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition (LSP)" })
